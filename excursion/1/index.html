@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink to fit=no">
+    <title>X Tomsk</title>
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- header start -->
+    <header class="header">
+        <div id="menu-btn" class="fas fa-bars"></div>
+        <a href="/it-раунд/2-tour/index.html" data-aos="zoom-in-left" data-aos-delay="150" class="logo">X<span>T</span>omsk</a>
+        <nav class="navbar">
+            <a href="#home" data-aos="zoom-in-left" data-aos-delay="300">Главная</a>
+            <a href="#about" data-aos="zoom-in-left" data-aos-delay="450">о нас</a>
+            <a href="#services" data-aos="zoom-in-left" data-aos-delay="600">услуги</a>
+            <a href="#destinations" data-aos="zoom-in-left" data-aos-delay="750">экскурсии</a>
+        </nav>
+        <a href="#book-form" class="btn" data-aos="zoom-in-left" data-aos-delay="1200">забронируй</a>
+    </header>
+    <!-- excursion start -->
+    <section class="excorsion" id="excorsion">
+        <div class="photo-container">
+            <img src="images/des-1.jpeg" class="image">
+        </div>
+        <div class="content">
+            <div class="stars">
+                <div class="stars-wrap">
+                    <input id="star-5" type="radio" name="rating" value="5" class="star-input">
+                    <label for="star-5" class="star-label"></label>
+                    <input id="star-4" type="radio" name="rating" value="4" class="star-input">
+                    <label for="star-4" class="star-label"></label>
+                    <input id="star-3" type="radio" name="rating" value="3" class="star-input">
+                    <label for="star-3" class="star-label"></label>
+                    <input id="star-2" type="radio" name="rating" value="2" class="star-input">
+                    <label for="star-2" class="star-label"></label>
+                    <input id="star-1" type="radio" name="rating" value="1" class="star-input">
+                    <label for="star-1" class="star-label"></label>
+                </div>
+            </div>
+            <h3>Всё о Томске за 3 часа</h3>
+            <span>10.05.2023</span>
+            <p>Экскурсия для тех, кто хочет узнать как можно больше о 
+            Сибирских Афинах! В программе: главные достопримечательности города, 
+            юбимые всеми памятники, объекты деревянного зодчества, Татарская слобода, 
+            рассказы о первом в Сибири университете и Чехове — в общем о самых значимых 
+            моментах для города. Но не забудем увидеть и тайные места, о которых не подозревают даже местные.</p>
+            <a href="#" class="btn">забронируй</a>
+        </div>
+    </section>
+    <!-- excursion end -->
+    <!-- reviews start -->
+    <section class="reviews">
+    </section>
+    <!-- reviews end -->
+    <!-- footer start -->
+    <section class="footer">
+        <div class="box-container">
+            <div class="box" data-aos="fade-up" data-aos-delay="150">
+                <a href="#" class="logo">X<span>T</span>omsk</a>
+                <p>путешествие с нами ты никогда не забудешь!</p>
+                <div class="share">
+                    <a href="#" class="fab fa-facebook-f"></a>
+                    <a href="#" class="fab fa-twitter"></a>
+                    <a href="#" class="fab fa-instagram"></a>
+                    <a href="#" class="fab fa-linkedin"></a>
+                </div>
+            </div>
+            <div class="box" data-aos="fade-up" data-aos-delay="300">
+                <h3>quick links</h3>
+                <a href="#home" class="links"><i class="fas fa-arrow-right"></i>Главная</a>
+                <a href="#about" class="links"><i class="fas fa-arrow-right"></i>о нас</a>
+                <a href="#services" class="links"><i class="fas fa-arrow-right"></i>услуги</a>
+                <a href="#destination" class="links"><i class="fas fa-arrow-right"></i>экскурсии</a>
+            </div>
+            <div class="box" data-aos="fade-up" data-aos-delay="450">
+                <h3>contact info</h3>
+                <p><i class="fas fa-map"></i>Томск, Россия</p>
+                <p><i class="fas fa-phone"></i>+7 (903)-915-25-36</p>
+                <p><i class="fas fa-envelope"></i>xtomsk@mail.com</p>
+                <p><i class="fas fa-clock"></i>8:00 - 22:00</p>
+            </div>
+            <div class="box" data-aos="fade-up" data-aos-delay="600">
+                <h3>новости</h3>
+                <p>подпишитесь на последние обновления</p>
+                <form action="">
+                    <input type="email" name="" class="email" placeholder="введите ваш email..">
+                    <input type="submit" value="подписаться" class="btn">
+                </form>
+            </div>
+        </div>
+    </section>
+    <div class="credit">coded by <span>the kinozemts</span> | all rights reserved</div>
+    <!-- footer end -->
+
+    <!-- custom js file link  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            offset: 150,
+        });
+    </script>
+</body>
+</html>
