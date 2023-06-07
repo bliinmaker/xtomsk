@@ -1,3 +1,6 @@
+import fontawesome from '@fortawesome/fontawesome'
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import image_des1 from '../../../assets/des-1.jpeg'
 import image_des2 from '../../../assets/des-2.jpeg'
 import image_des3 from '../../../assets/des-3.jpeg'
@@ -6,6 +9,8 @@ import image_des5 from '../../../assets/des-5.jpeg'
 import image_des6 from '../../../assets/des-6.jpeg'
 import image_des7 from '../../../assets/des-7.jpeg'
 import image_des8 from '../../../assets/des-8.jpeg'
+
+fontawesome.library.add(faAngleRight)
 
 const Destination = () => {
 	return (
@@ -22,7 +27,10 @@ const Destination = () => {
 					<div className='content'>
 						<p>Всё о Томске за 3 часа</p>
 						<a href='excursion/1/index.html'>
-							подробнее <i className='fas fa-angle-right'></i>
+							подробнее{' '}
+							<i>
+								<FontAwesomeIcon icon='fas fa-angle-right' />
+							</i>
 						</a>
 					</div>
 				</div>
@@ -33,7 +41,10 @@ const Destination = () => {
 					<div className='content'>
 						<p>Обзорная пешеходная экскурсия по Томску</p>
 						<a href='excursion/2/index.html'>
-							подробнее<i className='fas fa-angle-right'></i>
+							подробнее
+							<i>
+								<FontAwesomeIcon icon='fas fa-angle-right' />
+							</i>
 						</a>
 					</div>
 				</div>
@@ -44,7 +55,10 @@ const Destination = () => {
 					<div className='content'>
 						<p>Деревянное зодчество Томска</p>
 						<a href='excursion/3/index.html'>
-							подробнее <i className='fas fa-angle-right'></i>
+							подробнее{' '}
+							<i>
+								<FontAwesomeIcon icon='fas fa-angle-right' />
+							</i>
 						</a>
 					</div>
 				</div>
@@ -55,7 +69,10 @@ const Destination = () => {
 					<div className='content'>
 						<p>Белозерье</p>
 						<a href='excursion/4/index.html'>
-							подробнее <i className='fas fa-angle-right'></i>
+							подробнее{' '}
+							<i>
+								<FontAwesomeIcon icon='fas fa-angle-right' />
+							</i>
 						</a>
 					</div>
 				</div>
@@ -66,7 +83,10 @@ const Destination = () => {
 					<div className='content'>
 						<p>Томск необыкновенный</p>
 						<a href='excursion/5/index.html'>
-							подробнее <i className='fas fa-angle-right'></i>
+							подробнее{' '}
+							<i>
+								<FontAwesomeIcon icon='fas fa-angle-right' />
+							</i>
 						</a>
 					</div>
 				</div>
@@ -77,7 +97,10 @@ const Destination = () => {
 					<div className='content'>
 						<p>Персональная экскурсия</p>
 						<a href='excursion/6/index.html'>
-							подробнее <i className='fas fa-angle-right'></i>
+							подробнее{' '}
+							<i>
+								<FontAwesomeIcon icon='fas fa-angle-right' />
+							</i>
 						</a>
 					</div>
 				</div>
@@ -88,7 +111,10 @@ const Destination = () => {
 					<div className='content'>
 						<p>Томск купеческий</p>
 						<a href='excursion/7/index.html'>
-							подробнее <i className='fas fa-angle-right'></i>
+							подробнее{' '}
+							<i>
+								<FontAwesomeIcon icon='fas fa-angle-right' />
+							</i>
 						</a>
 					</div>
 				</div>
@@ -99,7 +125,10 @@ const Destination = () => {
 					<div className='content'>
 						<p>Всё и сразу</p>
 						<a href='excursion/8/index.html'>
-							подробнее <i className='fas fa-angle-right'></i>
+							подробнее{' '}
+							<i>
+								<FontAwesomeIcon icon='fas fa-angle-right' />
+							</i>
 						</a>
 					</div>
 				</div>
