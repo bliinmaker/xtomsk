@@ -1,6 +1,7 @@
 import fontawesome from '@fortawesome/fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from 'react-router-dom'
 
 fontawesome.library.add(faArrowRight)
 
@@ -10,43 +11,43 @@ const Footer = () => {
 			<section className='footer'>
 				<div className='box-container'>
 					<div className='box'>
-						<a href='#' className='logo'>
+						<Link href='#' className='logo'>
 							X<span>T</span>omsk
-						</a>
+						</Link>
 						<p>путешествие с нами ты никогда не забудешь!</p>
 						<div className='share'>
-							<a href='#' className='fab fa-facebook-f'></a>
-							<a href='#' className='fab fa-twitter'></a>
-							<a href='#' className='fab fa-instagram'></a>
-							<a href='#' className='fab fa-linkedin'></a>
+							<Link href='#' className='fab fa-facebook-f'></Link>
+							<Link href='#' className='fab fa-twitter'></Link>
+							<Link href='#' className='fab fa-instagram'></Link>
+							<Link href='#' className='fab fa-linkedin'></Link>
 						</div>
 					</div>
 					<div className='box'>
 						<h3>меню</h3>
-						<a href='#home' className='links'>
+						<Link href='#home' className='links'>
 							<i>
 								<FontAwesomeIcon icon='fas fa-arrow-right' />
 							</i>
 							Главная
-						</a>
-						<a href='#about' className='links'>
+						</Link>
+						<Link href='#about' className='links'>
 							<i>
 								<FontAwesomeIcon icon='fas fa-arrow-right' />
 							</i>
 							о нас
-						</a>
-						<a href='#services' className='links'>
+						</Link>
+						<Link href='#services' className='links'>
 							<i>
 								<FontAwesomeIcon icon='fas fa-arrow-right' />
 							</i>
 							услуги
-						</a>
-						<a href='#destination' className='links'>
+						</Link>
+						<Link href='#destination' className='links'>
 							<i>
 								<FontAwesomeIcon icon='fas fa-arrow-right' />
 							</i>
 							экскурсии
-						</a>
+						</Link>
 					</div>
 					<div className='box' >
 						<h3>контакты</h3>

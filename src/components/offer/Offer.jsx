@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 const Offer = () => {
 	return (
 		<section className='home' id='home'>
@@ -12,9 +14,9 @@ const Offer = () => {
 					Наша компания экскурсий предлагает уникальные и захватывающие
 					путешествия по всему городу!
 				</p>
-				<a href='#' className='btn' data-aos='fade-up' data-aos-delay='600'>
+				<Link href='#' className='btn' data-aos='fade-up' data-aos-delay='600'>
 					забронируй
-				</a>
+				</Link>
 			</div>
 		</section>
 	)

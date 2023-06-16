@@ -1,30 +1,32 @@
+import { Link } from "react-router-dom"
+
 const Header = () => {
 	return (
 		<div className='header'>
 			<div id='menu-btn' className='fas fa-bars'></div>
-			<a href='#' className='logo'>
+			<Link href='#' className='logo'>
 				X<span>T</span>omsk
-			</a>
+			</Link>
 			<nav className='navbar'>
-				<a href='#home'>
+				<Link href='#home'>
 					Главная
-				</a>
-				<a href='#about'>
+				</Link>
+				<Link href='#about'>
 					о нас
-				</a>
-				<a href='#services'>
+				</Link>
+				<Link href='#services'>
 					услуги
-				</a>
-				<a href='#destinations'>
+				</Link>
+				<Link href='#destinations'>
 					экскурсии
-				</a>
+				</Link>
 			</nav>
-			<a
+			<Link
 				href='#book-form'
 				className='btn'
 			>
 				забронируй
-			</a>
+			</Link>
 		</div>
 	)
 }

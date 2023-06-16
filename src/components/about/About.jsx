@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import video_about from '../../assets/about.mp4'
 
 const About = () => {
@@ -26,9 +27,9 @@ const About = () => {
 					природными красотами. Мы гарантируем незабываемые впечатления и опыт,
 					который останется с вами на всю жизнь.
 				</p>
-				<a href='#' className='btn'>
+				<Link href='/excursion' className='btn'>
 					подробнее
-				</a>
+				</Link>
 			</div>
 		</section>
 	)
