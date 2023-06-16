@@ -179,7 +179,7 @@ section {
 	flex-wrap: wrap;
 	gap: 1.5rem;
 }
-.book-form form .inputBoxf {
+.book-form form .inputBox {
 	-webkit-box-flex: 1;
 	-ms-flex: 1 1 25rem;
 	flex: 1 1 25rem;
@@ -188,7 +188,7 @@ section {
 	font-size: 1.4rem;
 	color: #3d3d3d;
 }
-.book-form form .inputBox input {
+.book-form form .inputBox input, .book-form form .inputBox select  {
 	width: 100%;
 	padding: 1.2rem 1.4rem;
 	border-radius: 5rem;

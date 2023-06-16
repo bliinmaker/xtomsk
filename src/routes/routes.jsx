@@ -22,7 +22,7 @@ export const appRoutes = [
 				element: <Home />,
 			},
 			{
-				path: '/excursion',
+				path: '/excursions/:excursionId',
 				element: <Excursion />,
 			},
 		],

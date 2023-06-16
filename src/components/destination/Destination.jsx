@@ -3,14 +3,14 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { getExcursion } from '../../api/excursions'
+import { getExcursions } from '../../api/excursions'
 
 fontawesome.library.add(faAngleRight)
 
 const Destination = () => {
 	const [excursions, setExcursions] = useState([])
 	useEffect(() => {
-		getExcursion().then(resp => {
+		getExcursions({}).then(resp => {
 			if (resp.status === 200) {
 				setExcursions(resp.data)
 				console.log(resp.data)
