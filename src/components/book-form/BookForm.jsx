@@ -19,7 +19,8 @@ const BookForm = () => {
 		getExcursions({}).then(resp => {
 			if (resp.status === 200) {
 				const currentThemes = resp.data.map(item => item.theme)
-				setThemes(currentThemes)
+				let uniqueThemes = [...new Set(currentThemes)]
+				setThemes(uniqueThemes)
 				console.log(resp.data)
 			}
 		})
@@ -79,7 +80,7 @@ const BookForm = () => {
 
 			<section className='destination-search' id='destinations'>
 				{findResults &&
-					findResults.map((result,id) => (
+					findResults.map((result, id) => (
 						<div key={id}>
 							<div className='box-container'>
 								<div className='box' data-aos='fade-up' data-aos-delay='150'>
@@ -101,13 +102,12 @@ const BookForm = () => {
 							</div>
 						</div>
 					))}
-				{isFormTouched && findResults.length === 0 &&
-					 (
-						<>
-							<div key={findResults.id} className='destination-none'>
-								<h3>Таких экскурсий пока что нет</h3>
-							</div>
-						</>
+				{isFormTouched && findResults.length === 0 && (
+					<>
+						<div key={findResults.id} className='destination-none'>
+							<h3>Таких экскурсий пока что нет</h3>
+						</div>
+					</>
 				)}
 			</section>
 		</>
