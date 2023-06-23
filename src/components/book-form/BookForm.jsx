@@ -43,7 +43,7 @@ const BookForm = () => {
 
 	return (
 		<>
-			<section className='book-form' id='book-form'>
+			<section className='excursion-form' id='book-form'>
 				<form onSubmit={onSubmitHandler}>
 					<div className='inputBox' data-aos='zoom-in' data-aos-delay='150'>
 						<span>Город</span>
