@@ -4,11 +4,11 @@ const Banner = () => {
 	return (
 		<div className='banner'>
 			<div className='content' data-aos='zoom-in-up' data-aos-delay='300'>
-				<span>начни свое путешествие</span>
-				<h3>вместе с нами</h3>
-				<p>уникальное и захватывающее путешествие по всему городу!</p>
+				<span>Начни свое путешествие</span>
+				<h3>Вместе с нами</h3>
+				<p>Уникальное и захватывающее путешествие по всему городу!</p>
 				<Link className='btn' href='#book-form'>
-					забронируй
+					Забронируй
 				</Link>
 			</div>
 		</div>

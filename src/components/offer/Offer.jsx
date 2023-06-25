@@ -15,7 +15,7 @@ const Offer = () => {
 					путешествия по всему городу!
 				</p>
 				<Link href='#' className='btn' data-aos='fade-up' data-aos-delay='600'>
-					забронируй
+					Забронируй
 				</Link>
 			</div>
 		</section>

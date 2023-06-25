@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import * as yup from 'yup'
 import { getExcursion } from '../../api/excursions'
 import { Input } from '../input/Input'
+import {Button} from '../button/Button'
 
 const phoneRegExp =
 	/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
@@ -84,7 +85,7 @@ export const Excursion = () => {
 		<section className='excorsion' id='excorsion'>
 			<div className='excursion-wrap'>
 				<div className='photo-container'>
-					<img src='https://placekitten.com/640/360' className='image'></img>
+					<img src='https://placekitten.com/640/360' className='image'/>
 				</div>
 				<div className='content'>
 					<div className='stars'>
@@ -165,7 +166,7 @@ export const Excursion = () => {
 						placeholder='ivan@gmail.com'
 						name='emailAddress'
 					/>
-					<input type='submit' value='Отправить' className='btn'></input>
+					<Button typeText='submit' valueText='Отправить'/>
 				</form>
 			</div>)}
 			<div className='comments'>

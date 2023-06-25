@@ -7,7 +7,7 @@ import {
 	faUtensils,
 	faWallet,
 } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Service } from '../service/Service'
 
 fontawesome.library.add(
 	faGlobe,
@@ -22,60 +22,54 @@ const Services = () => {
 	return (
 		<section className='services' id='services'>
 			<div className='heading'>
-				<span>наши услуги</span>
-				<h1>рентабельны</h1>
+				<span>Наши услуги</span>
+				<h1>Рентабельны</h1>
 			</div>
 			<div className='box-container'>
-				<div className='box' data-aos='zoom-in-up' data-aos-delay='150'>
-					<i>
-						<FontAwesomeIcon icon='fas fa-globe' />
-					</i>
-					<h3>Особенное</h3>
-					<p>мы отобрали только самые интересные экскурсии.</p>
-				</div>
-				<div className='box' data-aos='zoom-in-up' data-aos-delay='300'>
-					<i>
-						<FontAwesomeIcon icon='fas fa-person-hiking' />
-					</i>
-					<h3>преключения</h3>
-					<p>пойдя на экскурсии с нами, вы получите незабываемые эмоции.</p>
-				</div>
-				<div className='box' data-aos='zoom-in-up' data-aos-delay='450'>
-					<i>
-						<FontAwesomeIcon icon='fa-solid fa-utensils' />
-					</i>
-					<h3>еда & напитки</h3>
-					<p>
-						в каждой из наших экскурсий, мы идём в лучшие заведения города, и
-						кушаем!
-					</p>
-				</div>
-				<div className='box' data-aos='zoom-in-up' data-aos-delay='600'>
-					<i>
-						<FontAwesomeIcon icon='fa-solid fa-hotel' />
-					</i>
-					<h3>Проживание</h3>
-					<p>
-						по необходимости, мы занимаемся расселением новоприбывших туристов.
-					</p>
-				</div>
-				<div className='box' data-aos='zoom-in-up' data-aos-delay='750'>
-					<i>
-						<FontAwesomeIcon icon='fa-solid fa-wallet' />
-					</i>
-					<h3>доступная цена</h3>
-					<p>наши цены, самые низкие в городе!</p>
-				</div>
-				<div className='box' data-aos='zoom-in-up' data-aos-delay='900'>
-					<i>
-						<FontAwesomeIcon icon='fa-solid fa-headset' />
-					</i>
-					<h3>24/7 поддержка</h3>
-					<p>
-						вы можете написать/позвонить нам в любое время, ответим на любые
-						интересующие вас вопросы.
-					</p>
-				</div>
+				<Service
+					dataAos='zoom-in-up'
+					dataAosDelay='150'
+					icon='fas fa-globe'
+					title='Особенное'
+					text='Мы отобрали только самые интересные экскурсии.'
+				/>
+				<Service
+					dataAos='zoom-in-up'
+					dataAosDelay='300'
+					icon='fas fa-person-hiking'
+					title='Преключения'
+					text='Пойдя на экскурсии с нами, вы получите незабываемые эмоции.'
+				/>
+				<Service
+					dataAos='zoom-in-up'
+					dataAosDelay='450'
+					icon='fa-solid fa-utensils'
+					title='Еда & напитки'
+					text='В каждой из наших экскурсий, мы идём в лучшие заведения города, и
+					кушаем!'
+				/>
+				<Service
+					dataAos='zoom-in-up'
+					dataAosDelay='600'
+					icon='fa-solid fa-hotel'
+					title='Проживание'
+					text='По необходимости, мы занимаемся расселением новоприбывших туристов.'
+				/>
+				<Service
+					dataAos='zoom-in-up'
+					dataAosDelay='750'
+					icon='fa-solid fa-wallet'
+					title='Доступная цена'
+					text='Наши цены, самые низкие в городе!'
+				/>
+				<Service
+					dataAos='zoom-in-up'
+					dataAosDelay='900'
+					icon='fa-solid fa-headset'
+					title='24/7 поддержка'
+					text='Вы можете написать/позвонить нам в любое время, ответим на любые
+					интересующие вас вопросы.'
+				/>
 			</div>
 		</section>
 	)

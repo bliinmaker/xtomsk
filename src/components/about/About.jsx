@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import video_about from '../../assets/about.mp4'
+import video_about from '../../../dist/assets/about-4c096b98.mp4'
 
 const About = () => {
 	return (
@@ -9,17 +9,11 @@ const About = () => {
 				data-aos='fade-right'
 				data-aos-delay='300'
 			>
-				<video
-					src={video_about}
-					muted
-					autoPlay
-					loop
-					className='video'
-				></video>
+				<video src={video_about} muted autoPlay loop className='video'></video>
 			</div>
 			<div className='content' data-aos='fade-left' data-aos-delay='600'>
 				<span>Кто мы ?</span>
-				<h3>мы дарим улыбку</h3>
+				<h3>Мы дарим улыбку</h3>
 				<p>
 					Наша компания экскурсий предлагает уникальные и захватывающие
 					путешествия по всему городу, которые позволят вам открыть новые
@@ -28,7 +22,7 @@ const About = () => {
 					который останется с вами на всю жизнь.
 				</p>
 				<Link href='/excursion' className='btn'>
-					подробнее
+					Подробнее
 				</Link>
 			</div>
 		</section>

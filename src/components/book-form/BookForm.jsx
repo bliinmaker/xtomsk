@@ -5,6 +5,7 @@ import dayjs from 'dayjs'
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getExcursions } from '../../api/excursions'
+import { Input } from '../input/Input'
 
 fontawesome.library.add(faAngleRight)
 
@@ -45,21 +46,19 @@ const BookForm = () => {
 		<>
 			<section className='excursion-form' id='book-form'>
 				<form onSubmit={onSubmitHandler}>
-					<div className='inputBox' data-aos='zoom-in' data-aos-delay='150'>
-						<span>Город</span>
-						<input
-							type='text'
-							placeholder='томск'
-							value='Томск'
-							disabled={true}
-						></input>
-					</div>
-					<div className='inputBox' data-aos='zoom-in' data-aos-delay='300'>
-						<span>Kогда хотели бы посетить ?</span>
-						<input type='date' ref={dateRef}></input>
-					</div>
-					<div className='inputBox' data-aos='zoom-in' data-aos-delay='450'>
-						<span>Kакая тема вас интересует ?</span>
+					<Input
+						title='Город'
+						type='text'
+						placeholder='Томск'
+						disabled={true}
+					/>
+					<Input
+						title='Kогда хотели бы посетить?'
+						type='date'
+						refEl={dateRef}
+					/>
+					<div className='inputBox'>
+						<span>Kакая тема вас интересует?</span>
 						<select name='theme' placeholder='тема экскурсии' ref={themeRef}>
 							{themes.map((theme, id) => (
 								<option key={id} value={theme}>
@@ -68,14 +67,7 @@ const BookForm = () => {
 							))}
 						</select>
 					</div>
-					<input
-						type='submit'
-						value='найти'
-						data-aos='zoom-in'
-						data-aos-delay='600'
-						className='btn'
-					></input>
-				</form>
+					<Input type='submit' value='Найти' className='btn'/>				</form>
 			</section>
 
 			<section className='destination-search' id='destinations'>

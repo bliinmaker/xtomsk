@@ -1,0 +1,18 @@
+form .selectBox {
+	-webkit-box-flex: 1;
+	-ms-flex: 1 1 25rem;
+	flex: 1 1 25rem;
+}
+form .selectBox span {
+	font-size: 1.4rem;
+	color: #3d3d3d;
+}
+form .selectBox input {
+	width: 100%;
+	padding: 1.2rem 1.4rem;
+	border-radius: 5rem;
+	border: 0.2rem solid #d9296f;
+	font-size: 1.6rem;
+	background: none;
+	margin-top: 1rem;
+}

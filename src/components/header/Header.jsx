@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import Button from "../button/Button"
 
 const Header = () => {
 	return (
@@ -12,21 +13,16 @@ const Header = () => {
 					Главная
 				</Link>
 				<Link href='#about'>
-					о нас
+					О нас
 				</Link>
 				<Link href='#services'>
-					услуги
+					Услуги
 				</Link>
 				<Link href='#destinations'>
-					экскурсии
+					Экскурсии
 				</Link>
 			</nav>
-			<Link
-				href='#book-form'
-				className='btn'
-			>
-				забронируй
-			</Link>
+			<Button typeText='submit' valueText='Забронируй'/>
 		</div>
 	)
 }

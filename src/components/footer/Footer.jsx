@@ -2,6 +2,8 @@ import fontawesome from '@fortawesome/fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
+import Button from '../button/Button'
+import './Footer.scss'
 
 fontawesome.library.add(faArrowRight)
 
@@ -14,7 +16,7 @@ const Footer = () => {
 						<Link href='#' className='logo'>
 							X<span>T</span>omsk
 						</Link>
-						<p>путешествие с нами ты никогда не забудешь!</p>
+						<p>Путешествие с нами ты никогда не забудешь!</p>
 						<div className='share'>
 							<Link href='#' className='fab fa-facebook-f'></Link>
 							<Link href='#' className='fab fa-twitter'></Link>
@@ -23,7 +25,7 @@ const Footer = () => {
 						</div>
 					</div>
 					<div className='box'>
-						<h3>меню</h3>
+						<h3>Меню</h3>
 						<Link href='#home' className='links'>
 							<i>
 								<FontAwesomeIcon icon='fas fa-arrow-right' />
@@ -34,23 +36,23 @@ const Footer = () => {
 							<i>
 								<FontAwesomeIcon icon='fas fa-arrow-right' />
 							</i>
-							о нас
+							О нас
 						</Link>
 						<Link href='#services' className='links'>
 							<i>
 								<FontAwesomeIcon icon='fas fa-arrow-right' />
 							</i>
-							услуги
+							Услуги
 						</Link>
 						<Link href='#destination' className='links'>
 							<i>
 								<FontAwesomeIcon icon='fas fa-arrow-right' />
 							</i>
-							экскурсии
+							Экскурсии
 						</Link>
 					</div>
-					<div className='box' >
-						<h3>контакты</h3>
+					<div className='box'>
+						<h3>Контакты</h3>
 						<p>
 							<i className='fas fa-map'></i>Томск, Россия
 						</p>
@@ -65,8 +67,8 @@ const Footer = () => {
 						</p>
 					</div>
 					<div className='box'>
-						<h3>новости</h3>
-						<p>подпишитесь на последние обновления</p>
+						<h3>Новости</h3>
+						<p>Подпишитесь на последние обновления</p>
 						<form action=''>
 							<input
 								type='email'
@@ -74,7 +76,7 @@ const Footer = () => {
 								className='email'
 								placeholder='введите ваш email..'
 							></input>
-							<input type='submit' value='подписаться' className='btn'></input>
+							<Button typeText='submit' valueText='подписаться' />
 						</form>
 					</div>
 				</div>
