@@ -179,24 +179,6 @@ section {
 	flex-wrap: wrap;
 	gap: 1.5rem;
 }
-.excursion-form form .inputBox {
-	-webkit-box-flex: 1;
-	-ms-flex: 1 1 25rem;
-	flex: 1 1 25rem;
-}
-.excursion-form form .inputBox span {
-	font-size: 1.4rem;
-	color: #3d3d3d;
-}
-.excursion-form form .inputBox input {
-	width: 100%;
-	padding: 1.2rem 1.4rem;
-	border-radius: 5rem;
-	border: 0.2rem solid #d9296f;
-	font-size: 1.6rem;
-	background: none;
-	margin-top: 1rem;
-}
 .excursion-form form .inputBox select {
 	width: 100%;
 	padding: 1.3rem 1.4rem;
@@ -233,24 +215,6 @@ section {
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
 	gap: 1.5rem;
-}
-.book-form form .inputBox {
-	-webkit-box-flex: 1;
-	-ms-flex: 1 1 25rem;
-	flex: 1 1 25rem;
-}
-.book-form form .inputBox span {
-	font-size: 1.4rem;
-	color: #3d3d3d;
-}
-.book-form form .inputBox input {
-	width: 100%;
-	padding: 1.2rem 1.4rem;
-	border-radius: 5rem;
-	border: 0.2rem solid #d9296f;
-	font-size: 1.6rem;
-	background: none;
-	margin-top: 1rem;
 }
 .book-form form .btn {
 	padding: 1.3rem 1.4rem;
@@ -685,7 +649,7 @@ section {
 	gap: 15px;
 	align-self: stretch;
 	border-radius: 8px;
-	border: 1px solid #0089ff;
+	border: 1px solid #d9296f;
 	background: #fff;
 	box-shadow: 0px 4px 8px 0px rgba(10, 58, 100, 0.15);
 }
@@ -713,18 +677,18 @@ section {
 }
 .comment-box form .wrap-send button {
 	border-radius: 8px;
-	background: #0089ff;
+	background: #d9296f;
 	display: flex;
 	padding: 8px 20px;
 	justify-content: left;
 	align-items: flex-end;
 	color: #fff;
 }
-.allcomments{
+.all-comments{
 	padding: 10px;
 	margin-top: 2rem;
 	display: flex;
-	font-size: 2rem;
+	font-size: 1.5rem;
 	flex-direction: column;
 	align-items: flex-end;
 	gap: 15px;
