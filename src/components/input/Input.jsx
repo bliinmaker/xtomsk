@@ -1,6 +1,6 @@
 import './Input.scss'
 
-export const Input = ({title, errorText, onBlur, onChange, refEl, type, placeholder, ...rest}) => {
+export const Input = ({title, errorText, onBlur, valueText, onChange, refEl, type, placeholder, ...rest}) => {
 
 	return (
 		<div className='inputBox'>
@@ -9,6 +9,7 @@ export const Input = ({title, errorText, onBlur, onChange, refEl, type, placehol
 			<input
 				onBlur={onBlur}
                 onChange={onChange}
+				value={valueText}
 				ref={refEl}
 				type={type}
 				placeholder={placeholder}

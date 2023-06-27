@@ -3,4 +3,4 @@ const ExcursionPage = () => {
 	return <Excursion />
 }
 
-export default Excursion
+export default ExcursionPage

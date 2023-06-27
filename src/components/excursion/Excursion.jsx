@@ -1,10 +1,12 @@
 import dayjs from 'dayjs'
 import { useEffect, useRef, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import * as yup from 'yup'
 import { getExcursion } from '../../api/excursions'
+import { createOrder } from '../../api/order'
+import { Button } from '../button/Button'
 import { Input } from '../input/Input'
-import {Button} from '../button/Button'
+import './Excursion.scss'
 
 const phoneRegExp =
 	/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
@@ -21,9 +23,13 @@ const formSchema = yup.object().shape({
 		.required('Поле Email необходимо заполнить')
 		.email('Email введен неверно'),
 })
-console.log(formSchema)
+
 export const Excursion = () => {
 	const [excursion, setExcursion] = useState(null)
+	const [name, setName] = useState()
+	const [surName, setSurName] = useState()
+	const [phone, setPhone] = useState()
+	const [email, setEmail] = useState()
 	const [isVisibleForm, setIsVisibleForm] = useState(false)
 	const [errorsForm, setErrorsForm] = useState({})
 	const [isDisableButton, setIsDisableButton] = useState(false)
@@ -44,10 +50,20 @@ export const Excursion = () => {
 		setIsVisibleForm(oldState => !oldState)
 	}
 
-	const errors = {};
+	const errors = {}
 
 	const onSubmitHandler = event => {
 		event.preventDefault()
+
+		createOrder({
+			excursion: excursionId,
+			firstName: name,
+			lastName: surName,
+			phone: phone,
+			email: email,
+		}).then(resp => {
+			console.log(resp)
+		})
 
 		const firstName = event.target.firstName.value
 		const lastName = event.target.lastName.value
@@ -66,15 +82,13 @@ export const Excursion = () => {
 			)
 			setErrorsForm({})
 		} catch (err) {
-			const yupErrors = err.inner;
+			const yupErrors = err.inner
 			for (const yupError of yupErrors) {
-				errors[yupError.path] = yupError.message;
+				errors[yupError.path] = yupError.message
 			}
-			console.log(errors);
+			console.log(errors)
 			setErrorsForm(errors)
 		}
-
-		// validateForm()
 	}
 
 	if (!excursion) {
@@ -82,10 +96,10 @@ export const Excursion = () => {
 	}
 
 	return (
-		<section className='excorsion' id='excorsion'>
+		<section className='excursion' id='excursion'>
 			<div className='excursion-wrap'>
 				<div className='photo-container'>
-					<img src='https://placekitten.com/640/360' className='image'/>
+					<img src='https://placekitten.com/640/360' className='image' />
 				</div>
 				<div className='content'>
 					<div className='stars'>
@@ -140,47 +154,71 @@ export const Excursion = () => {
 					</button>
 				</div>
 			</div>
-			{isVisibleForm && (<div className='book-form'>
-				<form onSubmit={onSubmitHandler}>
-					<Input title='Имя' errorText={errorsForm['firstName']} name='firstName' type='text' placeholder='Иван' />
-					<Input
-						title='Фамилия'
-						errorText={errorsForm['lastName']}
-						name='lastName'
-						type='text'
-						placeholder='Иванов'
-					/>
-					<Input
-						title='Телефон'
-						errorText={errorsForm['phoneNumber']}
-						refEl={phoneRef}
-						type='text'
-						placeholder='+7(913)-888-88-88'
-						name='phoneNumber'
-					/>
-					<Input
-						title='Email'
-						errorText={errorsForm['emailAddress']}
-						refEl={emailRef}
-						type='text'
-						placeholder='ivan@gmail.com'
-						name='emailAddress'
-					/>
-					<Button typeText='submit' valueText='Отправить'/>
-				</form>
-			</div>)}
-			<div className='comments'>
+			{isVisibleForm && (
+				<div className='book-form'>
+					<form method='post' onSubmit={onSubmitHandler}>
+						<Input
+							title='Имя'
+							errorText={errorsForm['firstName']}
+							valueText={name}
+							onChange={e => setName(e.target.value)}
+							name='firstName'
+							type='text'
+							placeholder='Иван'
+						/>
+						<Input
+							title='Фамилия'
+							errorText={errorsForm['lastName']}
+							valueText={surName}
+							onChange={e => setSurName(e.target.value)}
+							name='lastName'
+							type='text'
+							placeholder='Иванов'
+						/>
+						<Input
+							title='Телефон'
+							errorText={errorsForm['phoneNumber']}
+							valueText={phone}
+							onChange={e => setPhone(e.target.value)}
+							refEl={phoneRef}
+							type='text'
+							placeholder='+7(913)-888-88-88'
+							name='phoneNumber'
+						/>
+						<Input
+							title='Email'
+							errorText={errorsForm['emailAddress']}
+							valueText={email}
+							onChange={e => setEmail(e.target.value)}
+							refEl={emailRef}
+							type='text'
+							placeholder='ivan@gmail.com'
+							name='emailAddress'
+						/>
+						<Button typeText='submit' valueText='Отправить' />
+					</form>
+				</div>
+			)}
+			<div className='comments-container'>
 				<h1>Коментарии</h1>
-				<div className='comment-box'>
+				<div className='create-comment'>
 					<form action=''>
-						<textarea rows={4}></textarea>
+						<h3>
+							<input placeholder='Ваше имя' type='text'></input>
+						</h3>
+						<textarea placeholder='Ваш отзыв' rows={2}></textarea>
 						<div className='wrap-send'>
-							<div className='img'></div>
-							<button>Отправить</button>
+							<div className='img'>
+								<Link>
+									<img src='../../../dist/assets/link.svg' />
+								</Link>
+							</div>
+							<button type='submit'>Отправить</button>
 						</div>
 					</form>
 				</div>
-				<div className='all-comments'>
+				<div className='comments'>
+					<h3>Kinozemts</h3>
 					<p>
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad cum
 						molestiae, reiciendis commodi cumque est doloremque illo vel
