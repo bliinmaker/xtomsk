@@ -1,0 +1,79 @@
+.comments-container {
+	display: flex;
+	margin-top: 5rem;
+	width: 1200px;
+	padding: 20px;
+	flex-direction: column;
+	flex-shrink: 0;
+	background-color: #fff;
+	border-radius: 1rem;
+}
+.comments-container h1 {
+	font-size: 3rem;
+}
+.create-comment form {
+	padding: 1rem;
+	margin-top: 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 15px;
+	align-self: stretch;
+	border-radius: 8px;
+	border: 1px solid #d9296f;
+	background: #fff;
+	box-shadow: 0px 4px 8px 0px rgba(10, 58, 100, 0.15);
+}
+.create-comment form textarea {
+	height: 4rem;
+	width: 100%;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	color: #000;
+	font-size: 16px;
+	line-height: 28px;
+}
+.create-comment form input {
+	height: 3rem;
+	width: 15rem;
+	border-radius: 1rem;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	color: #000;
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 28px;
+}
+.create-comment form input::placeholder {
+	color: rgba(0, 0, 0, 0.4);
+	font-size: 16px;
+	font-family: 'Poppins', sans-serif;
+	line-height: 28px;
+}
+.create-comment .wrap-send {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: space-between;
+}
+.create-comment form .wrap-send button {
+	border-radius: 8px;
+	background: #ef5693;
+	display: flex;
+	padding: 8px 20px;
+	color: #fff;
+}
+.create-comment form .wrap-send button:hover {
+	background: #d9296f;
+}
+.comments {
+	padding: 1rem;
+	margin-top: 5rem;
+	display: flex;
+	font-size: 1.5rem;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 5px;
+	align-self: stretch;
+	border-radius: 8px;
+	background: #fff;
+	box-shadow: 0px 4px 8px 0px rgba(10, 58, 100, 0.15);
+}

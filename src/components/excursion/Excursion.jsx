@@ -6,12 +6,15 @@ import { getExcursion } from '../../api/excursions'
 import { createOrder } from '../../api/order'
 import { Button } from '../button/Button'
 import { Input } from '../input/Input'
+import { Comments } from '../comments/Comments'
+import { Formik } from 'formik';
+
 import './Excursion.scss'
 
 const phoneRegExp =
 	/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
 
-const formSchema = yup.object().shape({
+const formBookSchema = yup.object().shape({
 	firstName: yup.string().required('Поле Имя необходимо заполнить'),
 	lastName: yup.string().required('Поле Фамилия необходимо заполнить'),
 	phoneNumber: yup
@@ -26,12 +29,8 @@ const formSchema = yup.object().shape({
 
 export const Excursion = () => {
 	const [excursion, setExcursion] = useState(null)
-	const [name, setName] = useState()
-	const [surName, setSurName] = useState()
-	const [phone, setPhone] = useState()
-	const [email, setEmail] = useState()
 	const [isVisibleForm, setIsVisibleForm] = useState(false)
-	const [errorsForm, setErrorsForm] = useState({})
+	// const [errorsForm, setErrorsForm] = useState({})
 	const [isDisableButton, setIsDisableButton] = useState(false)
 	let { excursionId } = useParams()
 	const phoneRef = useRef(null)
@@ -52,43 +51,41 @@ export const Excursion = () => {
 
 	const errors = {}
 
-	const onSubmitHandler = event => {
-		event.preventDefault()
+	const onSubmitHandler = (values) => {
+		console.log(values)
+
+		const {firstName, lastName, phoneNumber, emailAddress} = values;
 
 		createOrder({
-			excursion: excursionId,
-			firstName: name,
-			lastName: surName,
-			phone: phone,
-			email: email,
+			excursionId,
+			firstName,
+			lastName,
+			phone: phoneNumber,
+			email: emailAddress,
 		}).then(resp => {
 			console.log(resp)
 		})
 
-		const firstName = event.target.firstName.value
-		const lastName = event.target.lastName.value
-		const phoneNumber = event.target.phoneNumber.value
-		const emailAddress = event.target.emailAddress.value
-
-		try {
-			formSchema.validateSync(
-				{
-					firstName,
-					lastName,
-					phoneNumber,
-					emailAddress,
-				},
-				{ abortEarly: false }
-			)
-			setErrorsForm({})
-		} catch (err) {
-			const yupErrors = err.inner
-			for (const yupError of yupErrors) {
-				errors[yupError.path] = yupError.message
-			}
-			console.log(errors)
-			setErrorsForm(errors)
-		}
+		// try {
+		// 	formSchema.validateSync(
+		// 		{
+		// 			firstName,
+		// 			lastName,
+		// 			phoneNumber,
+		// 			emailAddress,
+		// 		},
+		// 		{ abortEarly: false }
+		// 	)
+			
+		// 	setErrorsForm({})
+		// } catch (err) {
+		// 	const yupErrors = err.inner
+		// 	for (const yupError of yupErrors) {
+		// 		errors[yupError.path] = yupError.message
+		// 	}
+		// 	console.log(errors)
+		// 	setErrorsForm(errors)
+		// }
 	}
 
 	if (!excursion) {
@@ -156,77 +153,77 @@ export const Excursion = () => {
 			</div>
 			{isVisibleForm && (
 				<div className='book-form'>
-					<form method='post' onSubmit={onSubmitHandler}>
-						<Input
-							title='Имя'
-							errorText={errorsForm['firstName']}
-							valueText={name}
-							onChange={e => setName(e.target.value)}
-							name='firstName'
-							type='text'
-							placeholder='Иван'
-						/>
-						<Input
-							title='Фамилия'
-							errorText={errorsForm['lastName']}
-							valueText={surName}
-							onChange={e => setSurName(e.target.value)}
-							name='lastName'
-							type='text'
-							placeholder='Иванов'
-						/>
-						<Input
-							title='Телефон'
-							errorText={errorsForm['phoneNumber']}
-							valueText={phone}
-							onChange={e => setPhone(e.target.value)}
-							refEl={phoneRef}
-							type='text'
-							placeholder='+7(913)-888-88-88'
-							name='phoneNumber'
-						/>
-						<Input
-							title='Email'
-							errorText={errorsForm['emailAddress']}
-							valueText={email}
-							onChange={e => setEmail(e.target.value)}
-							refEl={emailRef}
-							type='text'
-							placeholder='ivan@gmail.com'
-							name='emailAddress'
-						/>
-						<Button typeText='submit' valueText='Отправить' />
-					</form>
+					<Formik 
+						initialValues={{
+							firstName: '',
+							lastName: '',
+							emailAddress: '',
+							phoneNumber: ''
+						}}
+						validationSchema={formBookSchema}
+						onSubmit={onSubmitHandler}
+					>
+						{({
+							values,
+							errors,
+							touched,
+							handleChange,
+							handleBlur,
+							handleSubmit,
+							// isSubmitting,
+						}) => (
+							<form method='post' onSubmit={handleSubmit}>
+								<Input
+									title='Имя'
+									errorText={touched.firstName && errors.firstName}
+									onChange={handleChange}
+                     				onBlur={handleBlur}
+									valueText={values.firstName}
+									name='firstName'
+									type='text'
+									placeholder='Иван'
+								/>
+								<Input
+									title='Фамилия'
+									errorText={touched.lastName && errors.lastName}
+									onChange={handleChange}
+                     				onBlur={handleBlur}
+									valueText={values.lastName}
+									name='lastName'
+									type='text'
+									placeholder='Иванов'
+								/>
+								<Input
+									title='Телефон'
+									errorText={touched.phoneNumber && errors.phoneNumber}
+									onChange={handleChange}
+                     				onBlur={handleBlur}
+									valueText={values.phoneNumber}
+									// refEl={phoneRef}
+									type='text'
+									placeholder='+7(913)-888-88-88'
+									name='phoneNumber'
+								/>
+								<Input
+									title='Email'
+									errorText={touched.emailAddress && errors.emailAddress}
+									onChange={handleChange}
+                     				onBlur={handleBlur}
+									valueText={values.emailAddress}
+									// refEl={emailRef}
+									type='text'
+									placeholder='ivan@gmail.com'
+									name='emailAddress'
+								/>
+								<Button typeText='submit' valueText='Отправить' />
+							</form>
+						)}
+					</Formik>
 				</div>
 			)}
-			<div className='comments-container'>
-				<h1>Коментарии</h1>
-				<div className='create-comment'>
-					<form action=''>
-						<h3>
-							<input placeholder='Ваше имя' type='text'></input>
-						</h3>
-						<textarea placeholder='Ваш отзыв' rows={2}></textarea>
-						<div className='wrap-send'>
-							<div className='img'>
-								<Link>
-									<img src='../../../dist/assets/link.svg' />
-								</Link>
-							</div>
-							<button type='submit'>Отправить</button>
-						</div>
-					</form>
-				</div>
-				<div className='comments'>
-					<h3>Kinozemts</h3>
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad cum
-						molestiae, reiciendis commodi cumque est doloremque illo vel
-						repellendus nam, quod nemo magni temporibus adipisci necessitatibus
-						esse tenetur saepe ratione.
-					</p>
-				</div>
-			</div>
+
+			<Comments />
+
 		</section>
 	)
 }
