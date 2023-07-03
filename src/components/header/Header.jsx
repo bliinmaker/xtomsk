@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import Button from "../button/Button"
+import './Header.scss'
 
 const Header = () => {
 	return (

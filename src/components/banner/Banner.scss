@@ -1,0 +1,35 @@
+.banner {
+	background: -webkit-gradient(
+			linear,
+			left top,
+			left bottom,
+			from(rgba(17, 17, 17, 0.7)),
+			to(rgba(17, 17, 17, 0.7))
+		),
+		url(./assets/banner-bg.jpg) no-repeat;
+	background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.7)),
+		url(./assets/banner-bg.jpg) no-repeat;
+	background-size: cover;
+	background-position: center;
+	padding: 3rem 2rem;
+	background-attachment: fixed;
+	text-align: center;
+	margin-top: 5rem;
+	margin-bottom: 5rem;
+}
+.banner .content span {
+	font-size: 2rem;
+	color: #d9296f;
+}
+.banner .content h3 {
+	font-size: 4rem;
+	color: #fff;
+}
+.banner .content p {
+	min-width: 60rem;
+	margin: 1rem auto;
+	font-size: 1.4rem;
+	color: #f8f9fc;
+	letter-spacing: 1px;
+	line-height: 2;
+}

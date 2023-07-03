@@ -8,6 +8,7 @@ import {
 	faWallet,
 } from '@fortawesome/free-solid-svg-icons'
 import { Service } from '../service/Service'
+import './Services.scss'
 
 fontawesome.library.add(
 	faGlobe,

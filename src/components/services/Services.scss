@@ -1,0 +1,7 @@
+.services .box-container {
+	display: -ms-grid;
+	display: grid;
+	-ms-grid-template-column: (minmax(32rem, 1fr)) auto[auto-fit];
+	grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+	gap: 1.5rem;
+}

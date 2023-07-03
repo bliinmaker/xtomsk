@@ -1,0 +1,52 @@
+.home {
+	margin: auto;
+	margin-top: 10.5rem;
+	width: 90%;
+	border-radius: 1rem;
+	background: -webkit-gradient(
+			linear,
+			left top,
+			left bottom,
+			from(rgba(17, 17, 17, 0.7)),
+			to(rgba(17, 17, 17, 0.7))
+		),
+		url(../../assets/home-bg.jpg) no-repeat;
+	background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.7)),
+		url(../../assets/home-bg.jpg) no-repeat;
+	background-size: cover;
+	background-position: center;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	min-height: 80vh;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	padding-bottom: 5rem;
+}
+.home .content {
+	text-align: center;
+}
+.home .content span {
+	font-weight: bolder;
+	color: transparent;
+	-webkit-text-stroke: 0.1rem #fff;
+	font-size: 4vw;
+	display: block;
+}
+.home .content h3 {
+	font-size: 6vw;
+	color: #fff;
+}
+.home .content p {
+	max-width: 60rem;
+	margin: 1rem auto;
+	font-size: 1.4rem;
+	color: #f8f9fc;
+	line-height: 2;
+	letter-spacing: 1px;
+}

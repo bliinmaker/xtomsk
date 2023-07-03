@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getExcursions } from '../../api/excursions'
 import { Input } from '../input/Input'
+import './BookForm.scss'
 
 fontawesome.library.add(faAngleRight)
 

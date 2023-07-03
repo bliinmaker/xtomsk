@@ -1,0 +1,42 @@
+.about {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	gap: 4rem;
+	margin-top: 5rem;
+}
+.about .video-container {
+	-webkit-box-flex: 1;
+	-ms-flex: 1 1 42rem;
+	flex: 1 1 42rem;
+}
+.about .video-container video {
+	border-radius: 1rem;
+	width: 100%;
+}
+.about .content {
+	-webkit-box-flex: 1;
+	-ms-flex: 1 1 42em;
+	flex: 1 1 42rem;
+	margin-bottom: 5rem;
+}
+.about .content span {
+	color: #d9296f;
+	font-size: 2rem;
+}
+.about .content h3 {
+	color: #000;
+	font-size: 4rem;
+	margin-top: 0.5rem;
+}
+.about .content p {
+	padding: 1rem 0;
+	font-size: 1.4rem;
+	color: #3d3d3d;
+	line-height: 2;
+}

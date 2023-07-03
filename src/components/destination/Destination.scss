@@ -1,0 +1,48 @@
+.destination .box-container {
+	display: -ms-grid;
+	display: grid;
+	-ms-grid-template-column: (minmax(27rem, 1fr)) auto[auto-fit];
+	grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+	gap: 1.5rem;
+}
+.destination .box-container .box {
+	border-radius: 1rem;
+	overflow: hidden;
+	background: #fff;
+	box-shadow: rgba(17 17 17 / 15%) 0px 0.5rem 1rem;
+}
+.destination .box-container .box:hover img {
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}
+.destination .box-container .box .image {
+	height: 20rem;
+	overflow: hidden;
+	width: 100%;
+}
+.destination .box-container .box .image img {
+	height: 100%;
+	width: 100%;
+	-o-object-fit: cover;
+	object-fit: cover;
+}
+.destination .box-container .box .content {
+	padding: 2rem;
+	color: #000;
+}
+.destination .box-container .box .content p {
+	padding: 1rem 0;
+	font-size: 1.4rem;
+	color: #3d3d3d;
+	line-height: 2;
+}
+.destination .box-container .box .content a {
+	font-size: 1.7rem;
+	color: #d9296f;
+}
+.destination .box-container .box .content a:hover i {
+	padding-left: 1rem;
+}
+.destination .box-container .box .content a i {
+	padding-right: 0.5rem;
+}

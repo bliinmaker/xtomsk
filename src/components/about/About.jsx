@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import video_about from '../../../dist/assets/about-4c096b98.mp4'
+import './About.scss'
 
 const About = () => {
 	return (

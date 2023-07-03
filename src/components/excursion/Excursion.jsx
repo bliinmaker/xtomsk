@@ -1,15 +1,16 @@
 import dayjs from 'dayjs'
-import { useEffect, useRef, useState } from 'react'
+import { Formik } from 'formik'
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import * as yup from 'yup'
+import { createComment } from '../../api/comment'
 import { getExcursion } from '../../api/excursions'
 import { createOrder } from '../../api/order'
 import { Button } from '../button/Button'
 import { Input } from '../input/Input'
-import { Comments } from '../comments/Comments'
-import { Formik } from 'formik';
-
 import './Excursion.scss'
+import Stars from '../stars/Stars'
+// import Stars from '../comments/stars/Stars'
 
 const phoneRegExp =
 	/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
@@ -27,19 +28,24 @@ const formBookSchema = yup.object().shape({
 		.email('Email введен неверно'),
 })
 
+const formCommentSchema = yup.object().shape({
+	nickName: yup.string().required('Поле Имя необходимо заполнить'),
+	message: yup.string().required('Поле Отзыв необходимо заполнить'),
+})
+
 export const Excursion = () => {
-	const [excursion, setExcursion] = useState(null)
+	const [excursions, setExcursions] = useState(null)
 	const [isVisibleForm, setIsVisibleForm] = useState(false)
 	// const [errorsForm, setErrorsForm] = useState({})
-	const [isDisableButton, setIsDisableButton] = useState(false)
+	// const [isDisableButton, setIsDisableButton] = useState(false)
 	let { excursionId } = useParams()
-	const phoneRef = useRef(null)
-	const emailRef = useRef(null)
+	// const phoneRef = useRef(null)
+	// const emailRef = useRef(null)
 
 	useEffect(() => {
 		getExcursion(excursionId).then(resp => {
 			if (resp.status === 200) {
-				setExcursion(resp.data)
+				setExcursions(resp.data)
 				console.log(resp.data)
 			}
 		})
@@ -49,12 +55,8 @@ export const Excursion = () => {
 		setIsVisibleForm(oldState => !oldState)
 	}
 
-	const errors = {}
-
-	const onSubmitHandler = (values) => {
-		console.log(values)
-
-		const {firstName, lastName, phoneNumber, emailAddress} = values;
+	const onSubmitHandlerBook = values => {
+		const { firstName, lastName, phoneNumber, emailAddress } = values
 
 		createOrder({
 			excursionId,
@@ -66,6 +68,14 @@ export const Excursion = () => {
 			console.log(resp)
 		})
 
+		// createComment({
+		// 	nickName,
+		// 	message,
+		// 	image
+		// }).then(resp => {
+		// 	console.log(resp)
+		// })
+
 		// try {
 		// 	formSchema.validateSync(
 		// 		{
@@ -76,7 +86,7 @@ export const Excursion = () => {
 		// 		},
 		// 		{ abortEarly: false }
 		// 	)
-			
+
 		// 	setErrorsForm({})
 		// } catch (err) {
 		// 	const yupErrors = err.inner
@@ -88,19 +98,34 @@ export const Excursion = () => {
 		// }
 	}
 
-	if (!excursion) {
+	const onSubmitHandlerComment = values => {
+		const { nickName, message, image } = values
+		console.log(values)
+
+		createComment({
+			nickName,
+			message,
+			image,
+		}).then(resp => {
+			console.log(resp)
+		})
+	}
+
+	if (!excursions) {
 		return <div>Loading...</div>
 	}
 
 	return (
 		<section className='excursion' id='excursion'>
+			
 			<div className='excursion-wrap'>
 				<div className='photo-container'>
 					<img src='https://placekitten.com/640/360' className='image' />
 				</div>
 				<div className='content'>
 					<div className='stars'>
-						<div className='stars-wrap'>
+						<Stars />
+						{/* <div className='stars-wrap'>
 							<input
 								id='star-5'
 								type='radio'
@@ -141,11 +166,11 @@ export const Excursion = () => {
 								className='star-input'
 							></input>
 							<label htmlFor='star-1' className='star-label'></label>
-						</div>
+						</div>*/}
 					</div>
-					<h3>{excursion.title}</h3>
-					<span>{dayjs(excursion.date).format('DD.MM.YYYY')}</span>
-					<p>{excursion.description}</p>
+					<h3>{excursions.title}</h3>
+					<span>{dayjs(excursions.date).format('DD.MM.YYYY')}</span>
+					<p>{excursions.description}</p>
 					<button onClick={onShowBookHandler} className='btn'>
 						Забронируй
 					</button>
@@ -153,15 +178,15 @@ export const Excursion = () => {
 			</div>
 			{isVisibleForm && (
 				<div className='book-form'>
-					<Formik 
+					<Formik
 						initialValues={{
 							firstName: '',
 							lastName: '',
 							emailAddress: '',
-							phoneNumber: ''
+							phoneNumber: '',
 						}}
 						validationSchema={formBookSchema}
-						onSubmit={onSubmitHandler}
+						onSubmit={onSubmitHandlerBook}
 					>
 						{({
 							values,
@@ -177,7 +202,7 @@ export const Excursion = () => {
 									title='Имя'
 									errorText={touched.firstName && errors.firstName}
 									onChange={handleChange}
-                     				onBlur={handleBlur}
+									onBlur={handleBlur}
 									valueText={values.firstName}
 									name='firstName'
 									type='text'
@@ -187,7 +212,7 @@ export const Excursion = () => {
 									title='Фамилия'
 									errorText={touched.lastName && errors.lastName}
 									onChange={handleChange}
-                     				onBlur={handleBlur}
+									onBlur={handleBlur}
 									valueText={values.lastName}
 									name='lastName'
 									type='text'
@@ -197,7 +222,7 @@ export const Excursion = () => {
 									title='Телефон'
 									errorText={touched.phoneNumber && errors.phoneNumber}
 									onChange={handleChange}
-                     				onBlur={handleBlur}
+									onBlur={handleBlur}
 									valueText={values.phoneNumber}
 									// refEl={phoneRef}
 									type='text'
@@ -208,7 +233,7 @@ export const Excursion = () => {
 									title='Email'
 									errorText={touched.emailAddress && errors.emailAddress}
 									onChange={handleChange}
-                     				onBlur={handleBlur}
+									onBlur={handleBlur}
 									valueText={values.emailAddress}
 									// refEl={emailRef}
 									type='text'
@@ -221,9 +246,70 @@ export const Excursion = () => {
 					</Formik>
 				</div>
 			)}
-
-			<Comments />
-
+			<div className='comments-container'>
+				<h1>Коментарии</h1>
+				<div className='create-comment'>
+					<Formik
+						initialValues={{
+							nickName: '',
+							message: '',
+							image: '',
+						}}
+						validationSchema={formCommentSchema}
+						onSubmit={onSubmitHandlerComment}
+					>
+						{({
+							values,
+							errors,
+							touched,
+							handleChange,
+							handleBlur,
+							handleSubmit,
+							// isSubmitting,
+						}) => (
+							<form onSubmit={handleSubmit} method='post'>
+								{touched.nickName && <p>{errors.nickName}</p>}
+								<h3>
+									<input
+										value={values.nickName}
+										onChange={handleChange}
+										onBlur={handleBlur}
+										placeholder='Ваше имя'
+										type='text'
+										name='nickName'
+									></input>
+								</h3>
+								{touched.message && <p>{errors.message}</p>}
+								<textarea
+									value={values.message}
+									onChange={handleChange}
+									onBlur={handleBlur}
+									type='text'
+									name='message'
+									placeholder='Ваш отзыв'
+									rows={2}
+								></textarea>
+								<div className='wrap-send'>
+									<div className='img'>
+										<Link>
+											<img src='../../../dist/assets/link.svg' />
+										</Link>
+									</div>
+									<button type='submit'>Отправить</button>
+								</div>
+							</form>
+						)}
+					</Formik>
+				</div>
+				{excursions.comments.length > 0 &&
+					excursions.comments.map((comment, id) => (
+						<div key={id} className='comments'>
+							<h3>{comment.nickName}</h3>
+							<p>{comment.message}</p>
+						</div>
+					))}
+			</div>
+			{/* <Comments excursion={excursion} /> */}
 		</section>
 	)
 }
