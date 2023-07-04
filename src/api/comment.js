@@ -3,7 +3,8 @@ import axios from 'axios'
 axios.defaults.baseURL = 'http://localhost:3000'
 
 
-export const createComment = ({ nickName, message, image }) => {
+export const createComment = (excursionId, { nickName, message, image }) => {
+	const requestUrl = '/comments/' + excursionId
 
 	return axios({
 		method: 'post',
@@ -12,6 +13,6 @@ export const createComment = ({ nickName, message, image }) => {
 			message,
 			image,
 		},
-		url: '/comments',
+		url: requestUrl,
 	})
 }

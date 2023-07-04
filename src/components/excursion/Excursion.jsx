@@ -8,8 +8,9 @@ import { getExcursion } from '../../api/excursions'
 import { createOrder } from '../../api/order'
 import { Button } from '../button/Button'
 import { Input } from '../input/Input'
-import './Excursion.scss'
 import Stars from '../stars/Stars'
+import './Excursion.scss'
+import {Comments} from '../comments/Comments'
 // import Stars from '../comments/stars/Stars'
 
 const phoneRegExp =
@@ -28,13 +29,13 @@ const formBookSchema = yup.object().shape({
 		.email('Email введен неверно'),
 })
 
-const formCommentSchema = yup.object().shape({
-	nickName: yup.string().required('Поле Имя необходимо заполнить'),
-	message: yup.string().required('Поле Отзыв необходимо заполнить'),
-})
+// const formCommentSchema = yup.object().shape({
+// 	nickName: yup.string().required('Поле Имя необходимо заполнить'),
+// 	message: yup.string().required('Поле Отзыв необходимо заполнить'),
+// })
 
 export const Excursion = () => {
-	const [excursions, setExcursions] = useState(null)
+	const [excursion, setExcursion] = useState(null)
 	const [isVisibleForm, setIsVisibleForm] = useState(false)
 	// const [errorsForm, setErrorsForm] = useState({})
 	// const [isDisableButton, setIsDisableButton] = useState(false)
@@ -45,7 +46,7 @@ export const Excursion = () => {
 	useEffect(() => {
 		getExcursion(excursionId).then(resp => {
 			if (resp.status === 200) {
-				setExcursions(resp.data)
+				setExcursion(resp.data)
 				console.log(resp.data)
 			}
 		})
@@ -55,7 +56,7 @@ export const Excursion = () => {
 		setIsVisibleForm(oldState => !oldState)
 	}
 
-	const onSubmitHandlerBook = values => {
+	const onSubmitHandlerBook = (values, { resetForm }) => {
 		const { firstName, lastName, phoneNumber, emailAddress } = values
 
 		createOrder({
@@ -66,6 +67,7 @@ export const Excursion = () => {
 			email: emailAddress,
 		}).then(resp => {
 			console.log(resp)
+			resetForm()
 		})
 
 		// createComment({
@@ -98,26 +100,26 @@ export const Excursion = () => {
 		// }
 	}
 
-	const onSubmitHandlerComment = values => {
-		const { nickName, message, image } = values
-		console.log(values)
+	// const onSubmitHandlerComment = (values, { resetForm }) => {
+	// 	const { nickName, message, image } = values
+	// 	console.log(values)
 
-		createComment({
-			nickName,
-			message,
-			image,
-		}).then(resp => {
-			console.log(resp)
-		})
-	}
+	// 	createComment(excursionId, {
+	// 		nickName,
+	// 		message,
+	// 		image,
+	// 	}).then(resp => {
+	// 		console.log(resp)
+	// 		resetForm()
+	// 	})
+	// }
 
-	if (!excursions) {
+	if (!excursion) {
 		return <div>Loading...</div>
 	}
 
 	return (
 		<section className='excursion' id='excursion'>
-			
 			<div className='excursion-wrap'>
 				<div className='photo-container'>
 					<img src='https://placekitten.com/640/360' className='image' />
@@ -168,9 +170,9 @@ export const Excursion = () => {
 							<label htmlFor='star-1' className='star-label'></label>
 						</div>*/}
 					</div>
-					<h3>{excursions.title}</h3>
-					<span>{dayjs(excursions.date).format('DD.MM.YYYY')}</span>
-					<p>{excursions.description}</p>
+					<h3>{excursion.title}</h3>
+					<span>{dayjs(excursion.date).format('DD.MM.YYYY')}</span>
+					<p>{excursion.description}</p>
 					<button onClick={onShowBookHandler} className='btn'>
 						Забронируй
 					</button>
@@ -246,7 +248,7 @@ export const Excursion = () => {
 					</Formik>
 				</div>
 			)}
-			<div className='comments-container'>
+			{/* <div className='comments-container'>
 				<h1>Коментарии</h1>
 				<div className='create-comment'>
 					<Formik
@@ -308,8 +310,8 @@ export const Excursion = () => {
 							<p>{comment.message}</p>
 						</div>
 					))}
-			</div>
-			{/* <Comments excursion={excursion} /> */}
+			</div> */}
+			{excursion && <Comments excursionId={excursionId} comments={excursion.comments}/>}
 		</section>
 	)
 }
