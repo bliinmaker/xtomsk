@@ -1,35 +1,14 @@
-import './Stars.scss'
+import React, { useState } from 'react'
+import { Rating } from 'react-simple-star-rating'
 
 const Stars = () => {
-	return (
-		<ul className='rating'>
-			<li>
-				<button>
-					<div className='star'></div>
-				</button>
-			</li>
-			<li>
-				<button>
-					<div className='star'></div>
-				</button>
-			</li>
-			<li>
-				<button>
-					<div className='star'></div>
-				</button>
-			</li>
-			<li>
-				<button>
-					<div className='star'></div>
-				</button>
-			</li>
-			<li>
-				<button>
-					<div className='star'></div>
-				</button>
-			</li>
-		</ul>
-	)
+	const [rating, setRating] = useState(0)
+
+	const handleRating = rate => {
+		setRating(rate)
+	}
+
+	return <Rating onClick={handleRating} initialValue={rating} />
 }
 
 export default Stars

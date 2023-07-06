@@ -1,15 +1,20 @@
+import dayjs from 'dayjs'
 import { Formik } from 'formik'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import * as yup from 'yup'
 import { createComment } from '../../api/comment'
+import { uploadImage } from '../../api/uploads'
 import './Comment.scss'
-
 const formCommentSchema = yup.object().shape({
 	nickName: yup.string().required('Поле Имя необходимо заполнить'),
 	message: yup.string().required('Поле Отзыв необходимо заполнить'),
 })
 
 export const Comments = ({ excursionId, comments }) => {
+	const [file, setFile] = useState(null)
+	const [imageSrc, setImageSrc] = useState(null)
+
 	const onSubmitHandlerComment = (values, { resetForm }) => {
 		const { nickName, message, image } = values
 		console.log(values)
@@ -17,27 +22,25 @@ export const Comments = ({ excursionId, comments }) => {
 		createComment(excursionId, {
 			nickName,
 			message,
-			image,
+			image: imageSrc || '',
 		}).then(resp => {
 			console.log(resp)
 			resetForm()
 		})
 	}
 
-	const handleFileChange = (event) => {
-		
+	const handleFileChange = event => {
+		if (event.target.files) {
+			setFile(event.target.files[0])
+		}
 	}
 
 	const handleUpload = () => {
-
-		// const data = new FormData();
-		// data.append('uploadFile', file, file.name)
-
-		// метод из API post
-		// uploadImage(data);
-		//{method: 'POST', url:requestUrl, data: data}
-
+		const imageData = new FormData()
+		imageData.append('uploadFile', file, file.name)
+		uploadImage(imageData).then(resp => setImageSrc(resp.data.fileName))
 	}
+	console.log(comments)
 
 	return (
 		<div className='comments-container'>
@@ -91,18 +94,28 @@ export const Comments = ({ excursionId, comments }) => {
 								</div>
 								<button type='submit'>Отправить</button>
 							</div>
+							{imageSrc ? (
+								<img width={200} src={'http://localhost:3000/uploads/images/' + imageSrc} />
+							) : (
+								<>
+									<input type='file' onChange={handleFileChange} />
+									<button onClick={handleUpload}>Загрузить</button>
+								</>
+							)}
 						</form>
 					)}
 				</Formik>
-
-				{/* <input type='file' onChange={handleFileChange} />
-				<button onClick={handleUpload}>Загрузить</button> */}
+				
 			</div>
 			{comments.length > 0 &&
 				comments.map((comment, id) => (
 					<div key={id} className='comments'>
-						<h3>{comment.nickName}</h3>
-						<p>{comment.message}</p>
+						<div className='wrap-content'>
+							<h3>{comment.nickName}</h3>
+							<p>{comment.message}</p>
+							{comment.image && <img width={100} src={'http://localhost:3000/uploads/images/' + comment.image}/>}
+						</div>
+						<p>{dayjs(comment.createdAt).format('mm:hh DD.MM.YYYY')}</p>
 					</div>
 				))}
 		</div>
