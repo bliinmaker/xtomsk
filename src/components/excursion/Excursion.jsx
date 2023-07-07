@@ -28,11 +28,6 @@ const formBookSchema = yup.object().shape({
 		.email('Email введен неверно'),
 })
 
-// const formCommentSchema = yup.object().shape({
-// 	nickName: yup.string().required('Поле Имя необходимо заполнить'),
-// 	message: yup.string().required('Поле Отзыв необходимо заполнить'),
-// })
-
 export const Excursion = () => {
 	const [excursion, setExcursion] = useState(null)
 	const [isVisibleForm, setIsVisibleForm] = useState(false)
@@ -78,12 +73,12 @@ export const Excursion = () => {
 	}
 
 	const handleRating = rating => {
-		const isRated = localStorage.getItem('isRated')
+		// const isRated = localStorage.getItem('isRated')
 
-		if (isRated !== 'true') {
+		// if (isRated !== 'true') {
 			rateExcursion(excursionId, rating)
-			localStorage.setItem('isRated', 'true')
-		}
+			// localStorage.setItem('isRated', 'true')
+		// }
 	}
 
 	if (!excursion) {

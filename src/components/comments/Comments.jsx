@@ -6,6 +6,7 @@ import * as yup from 'yup'
 import { createComment } from '../../api/comment'
 import { uploadImage } from '../../api/uploads'
 import './Comment.scss'
+import { API_HOST } from '../../config/config'
 const formCommentSchema = yup.object().shape({
 	nickName: yup.string().required('Поле Имя необходимо заполнить'),
 	message: yup.string().required('Поле Отзыв необходимо заполнить'),
@@ -95,7 +96,7 @@ export const Comments = ({ excursionId, comments }) => {
 								<button type='submit'>Отправить</button>
 							</div>
 							{imageSrc ? (
-								<img width={200} src={'http://localhost:3000/uploads/images/' + imageSrc} />
+								<img width={200} src={API_HOST + '/uploads/images/' + imageSrc} />
 							) : (
 								<>
 									<input type='file' onChange={handleFileChange} />
@@ -113,9 +114,9 @@ export const Comments = ({ excursionId, comments }) => {
 						<div className='wrap-content'>
 							<h3>{comment.nickName}</h3>
 							<p>{comment.message}</p>
-							{comment.image && <img width={100} src={'http://localhost:3000/uploads/images/' + comment.image}/>}
+							{comment.image && <img width={100} src={API_HOST + '/uploads/images/' + comment.image}/>}
 						</div>
-						<p>{dayjs(comment.createdAt).format('mm:hh DD.MM.YYYY')}</p>
+						<p>{dayjs(comment.createdAt).format('hh:mm DD.MM.YYYY')}</p>
 					</div>
 				))}
 		</div>

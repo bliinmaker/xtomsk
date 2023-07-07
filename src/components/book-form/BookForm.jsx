@@ -68,7 +68,8 @@ const BookForm = () => {
 							))}
 						</select>
 					</div>
-					<Input type='submit' value='Найти' className='btn'/>				</form>
+					<Input type='submit' value='Найти' className='btn' />{' '}
+				</form>
 			</section>
 
 			<section className='destination-search' id='destinations'>

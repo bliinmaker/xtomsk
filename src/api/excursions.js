@@ -1,19 +1,21 @@
 import axios from 'axios'
+import { API_HOST } from '../config/config';
 
-axios.defaults.baseURL = 'http://localhost:3000'
+axios.defaults.baseURL = API_HOST
 
 export const getExcursions = ({ title, theme, date }) => {
-	let params = new URLSearchParams()
+	let params = new URLSearchParams();
 
 	theme && params.set('theme', theme)
 	title && params.set('title', title)
 	date && params.set('date', date)
 
+
 	// console.log(params.toString())
 
-	///excursions?theme=какая-то тема&date=2023-05-31&title=имя
+	///excursions?theme=мкакая-то теа&date=2023-05-31&title=имя
 
-	// const requestUrl = '/excursions' + '?' + params.toString()
+	// const requestUrl = '/excursions' + '?theme=' + theme + '&title=' + title;
 
 	const requestUrl = `/excursions?${params.toString()}`
 
